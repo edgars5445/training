@@ -4,12 +4,14 @@
         <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
     </head>
     <div class="main-block">
-        <ul>
-            <li>Tehnika</li>
-            <li>Elektronika</li>
-            <li>Mājas</li>
-            <li>Internets</li>
-            <li>Gaisma</li>
-        </ul>
+        <div class="main-block categories">    
+            <ul>
+            @foreach ($categories as $category)
+                {{-- <form method="POST" action="{{ action([App\Http\Controllers\HomeController::class, 'show']) }}"> --}}
+                    <li><button class="category">{{ $category->name }}</button></li>      
+                {{-- </form> --}}
+            @endforeach
+            </ul>
+        </div>
     </div>
 </x-app-layout>
