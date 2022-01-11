@@ -1,7 +1,36 @@
 .main-block {
-    width:90%;
-    text-align:center;
+    width:80%;
+    margin:auto; 
+    margin-top: 7%;
 }
 p {
-    font-size: 60px;
+    font-size: 10%;
+}
+li {
+    position:relative;
+    font-size:320%;
+    margin-bottom: 10%;
+}
+.cat-image {
+    height:129px;
+    margin:0;
+    display:inline;
+}
+
+.cat-button {
+    display:inline;
+    text-align:center;
+    vertical-align: middle;
+    height:130px;
+
+}
+
+.category {
+    width:90%;
+    border-bottom: 1px solid black;
+    margin:0;
+}
+.category:hover {
+    background-color: lightgray;
+    transition: background-color 300ms linear;
 }

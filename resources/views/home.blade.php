@@ -8,7 +8,12 @@
             <ul>
             @foreach ($categories as $category)
                 {{-- <form method="POST" action="{{ action([App\Http\Controllers\HomeController::class, 'show']) }}"> --}}
-                    <li><button class="category">{{ $category->name }}</button></li>      
+                <li>
+                    <div class="category">
+                        <img src="{{ $category->image }}" alt="" class="cat-image">
+                        <button  class="cat-button">{{ $category->name }}</button>
+                    </div>
+                </li>      
                 {{-- </form> --}}
             @endforeach
             </ul>
