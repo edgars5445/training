@@ -5,17 +5,18 @@
     </head>
     <div class="main-block">
         <div class="main-block categories">    
+            We made it this far!
+            
             <ul>
-            @foreach ($categories as $category)
+            @foreach ($sections as $section)
                 <li>
-                    <a href="{{ route('category', [$category->name, 'categoryID'=>$category->id]) }}">
+                    {{-- <a href="{{ route('category', [$category->name]) }}"> --}}
                         <button  class="category">
                             <div class="">
-                                <img src="{{ $category->image }}" alt="" class="cat-image"> 
-                                <p class="cat-button">{{ $category->name }}</p> 
+                                <p class="cat-button">{{ $section->name }}</p> 
                             </div>
                         </button>
-                    </a>
+                    {{-- </a>    --}}
                 </li>            
             @endforeach
             </ul>

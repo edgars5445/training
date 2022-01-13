@@ -3,34 +3,33 @@
     margin:auto; 
     margin-top: 7%;
 }
-p {
-    font-size: 10%;
-}
+
 li {
     position:relative;
     font-size:320%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 .cat-image {
     height:129px;
     margin:0;
-    display:inline;
+    float:left;
 }
 
-.cat-button {
-    display:inline;
-    text-align:center;
+.cat-button {  
     vertical-align: middle;
-    height:130px;
-
+    position:absolute;
+    left:140px;
+    top:18%;
+    float:left;
 }
 
 .category {
     width:90%;
-    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     margin:0;
+
 }
 .category:hover {
     background-color: lightgray;
-    transition: background-color 300ms linear;
+    transition: background-color 200ms linear;
 }

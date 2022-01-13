@@ -19,4 +19,10 @@ Route::get('/', [
     HomeController::class, 'index'
 ])->name('dashboard');
 
+Route::get('/{category}',[
+    HomeController::class, 'openCategory'
+])->name('category');
+
+
+
 require __DIR__.'/auth.php';
