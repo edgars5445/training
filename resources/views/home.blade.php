@@ -8,7 +8,7 @@
             <ul>
             @foreach ($categories as $category)
                 <li>
-                    <a href="{{ route('category', [$category->name, 'categoryID'=>$category->id]) }}">
+                    <a href="{{ route('category', [strtolower($category->name)]) }}">
                         <button  class="category">
                             <div class="">
                                 <img src="{{ $category->image }}" alt="" class="cat-image"> 

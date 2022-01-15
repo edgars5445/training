@@ -14,10 +14,17 @@ class HomeController extends Controller
         return view('home',compact('categories'));
     }
 
-    public function openCategory(Request $request)
+    public function openCategory(Request $request, $category)
     {
-        $categoryID=$request->input('categoryID');
+        $data=Category::where('name','=',$category)->get()->toArray();
+        $categoryID=$data[0]['id'];
+        if(isset($categoryID)){
+        $categoryName = strtolower($data[0]['name']);
+        } else {
+            $categoryName= 'default';
+        }
         $sections = Section::where('category_id', '=', $categoryID)->get();
-        return view('category', compact('sections','categoryID'));
+        
+        return view('category', compact('sections','categoryID','categoryName'));
     }
 }

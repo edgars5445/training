@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,10 @@ Route::get('/', [
 Route::get('/{category}',[
     HomeController::class, 'openCategory'
 ])->name('category');
+
+Route::get('/{category}/{section}',[
+    SectionController::class, 'index'
+])->name('section');
 
 
 

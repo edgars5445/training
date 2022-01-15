@@ -5,14 +5,11 @@
     </head>
     <div class="main-block">
         <div class="main-block sections">    
-
+            wtf
             <ul>
-            @foreach ($sections as $section)
+            {{-- @foreach ($sections as $section)
                 <li>
-                    <?php $sectionName=$section->name;
-                       $sectionName = strtolower(str_replace(' ', '', $sectionName));
-                    ?>
-                    <a href="{{ route('section',  [$categoryName, $sectionName]) }}"> 
+                    <a href="{{ route('section', ['category'=>$categoryName, 'section'=>$section->name]) }}"> 
                         <button  class="section">
                             <div class="">
                                 <p class="sec-button">{{ $section->name }} ( : number of posts)</p> 
@@ -20,7 +17,7 @@
                         </button>
                     </a>
                 </li>            
-            @endforeach
+            @endforeach --}}
             </ul>
         </div>
     </div>
