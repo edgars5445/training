@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Redirect;
 
 class RegisteredUserController extends Controller
 {
@@ -20,6 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
+        Redirect::setIntendedUrl(url()->previous());
         return view('auth.register');
     }
 
@@ -49,6 +51,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect('/');
+        return redirect()->intended();
     }
 }

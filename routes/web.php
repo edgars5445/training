@@ -27,3 +27,4 @@ Route::get('/{category}',[
 Route::get('/{category}/{section}',[
     SectionController::class, 'index'
 ])->name('section');
+

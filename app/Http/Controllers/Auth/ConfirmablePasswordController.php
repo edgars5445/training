@@ -17,6 +17,7 @@ class ConfirmablePasswordController extends Controller
      */
     public function show()
     {
+        Redirect::setIntendedUrl(url()->previous());
         return view('auth.confirm-password');
     }
 
