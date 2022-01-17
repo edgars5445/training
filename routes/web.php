@@ -14,7 +14,7 @@ use App\Http\Controllers\SectionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+require __DIR__.'/auth.php';
 
 Route::get('/', [
     HomeController::class, 'index'
@@ -27,7 +27,3 @@ Route::get('/{category}',[
 Route::get('/{category}/{section}',[
     SectionController::class, 'index'
 ])->name('section');
-
-
-
-require __DIR__.'/auth.php';

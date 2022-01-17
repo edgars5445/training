@@ -4,8 +4,7 @@
         <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
     </head>
     <div class="main-block">
-        <div class="main-block sections">    
-
+        <div class="main-block sections">   
             <ul>
             @foreach ($sections as $section)
                 <li>

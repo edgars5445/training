@@ -33,7 +33,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             @guest
                             <x-dropdown-link href="/login">Login</x-dropdown-link>
                             <x-dropdown-link href="/register">Register</x-dropdown-link>
