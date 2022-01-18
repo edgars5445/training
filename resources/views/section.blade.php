@@ -5,19 +5,26 @@
     </head>
     <div class="main-block">
         <div class="main-block sections">    
-            wtf
             <ul>
-            {{-- @foreach ($sections as $section)
+            @foreach ($posts as $post)
                 <li>
-                    <a href="{{ route('section', ['category'=>$categoryName, 'section'=>$section->name]) }}"> 
+                    {{-- <a href="{{ route('section', ['category'=>$categoryName, 'section'=>$section->name]) }}">  --}}
                         <button  class="section">
-                            <div class="">
-                                <p class="sec-button">{{ $section->name }} ( : number of posts)</p> 
+                            <div class="post">
+                                <div class="div-image"><img src="{{ $post->image }}" alt="" class="post-image"> </div>
+                                <div class="div-text">
+                                <h2 class="post-title">{{ $post->title }}</h2> 
+                                <p class="post-description">{{ $post->description }}</p> 
+                                <p class="post-price">Cena: {{ $post->price }}€</p> 
+                                </div> 
+                                
                             </div>
+                            
                         </button>
-                    </a>
+                        <div class="breakline"></div>
+                    {{-- </a> --}}
                 </li>            
-            @endforeach --}}
+            @endforeach
             </ul>
         </div>
     </div>

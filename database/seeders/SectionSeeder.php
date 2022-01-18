@@ -14,6 +14,19 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $section = new Section();
+        $section->name = 'Personal computers';
+        $section->category_id = '1';
+        $section->save();
+
+        $section = new Section();
+        $section->name = 'Laptops';
+        $section->category_id = '1';
+        $section->save();
+
+        $section = new Section();
+        $section->name = 'Components';
+        $section->category_id = '1';
+        $section->save();
     }
 }

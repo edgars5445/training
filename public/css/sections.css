@@ -9,3 +9,52 @@ li {
     font-size:150%;
     margin-bottom: 1%;
 }
+
+.post-image {
+    
+    left: 0px;
+
+    margin:0px;
+}
+
+.div-image{
+    margin:0px;
+    width:10%;
+    float:left;
+    border:1px solid black;
+    border-radius: 5%;
+
+}
+
+.div-text{
+    padding-left:20px;
+    width:80%;
+    float:left;    
+}
+
+.post-title {  
+    position:relative;
+    text-align: left;
+    margin-right:auto;
+    font-weight: bold;
+    font-size:110%;
+    text-decoration: underline;;
+}
+
+.post-description {
+    position:relative;
+    text-align: left;
+}
+
+.post-price{
+    position:relative;
+    text-align: left;
+ 
+}
+
+div.breakline {
+    border-bottom:1px solid black;
+    margin-top:2%;
+    margin-bottom: 2%;
+}
+
