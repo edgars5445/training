@@ -7,12 +7,16 @@
 li {
     position:relative;
     font-size:320%;
-    margin-bottom: 5%;
+}
+
+p {
+    color:black;
 }
 .cat-image {
     height:129px;
     margin:0;
     float:left;
+    border-radius: 3%;
 }
 
 .cat-button {  
@@ -24,12 +28,42 @@ li {
 }
 
 .category {
-    width:90%;
-    border-top: 1px solid black;
+    width:85%;
     margin:0;
 
 }
 .category:hover {
     background-color: lightgray;
+    transition: background-color 200ms linear;
+}
+
+div.breakline {
+    border-bottom: 1px solid black;
+    margin:2% 0;
+}
+
+.admin-button {
+    font-size: 40%;
+    border: 1px solid black;
+    position:absolute;
+}
+
+.delete-cat {
+    right:0;
+    width:7%;
+}
+
+.edit-cat {
+    right:7.5%;
+    width:5%;
+}
+
+.delete-cat:hover{
+    background-color: red;
+    transition: background-color 200ms linear;
+}
+
+.edit-cat:hover{
+    background-color: yellow;
     transition: background-color 200ms linear;
 }

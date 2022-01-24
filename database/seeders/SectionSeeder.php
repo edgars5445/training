@@ -14,6 +14,7 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
+        Section::truncate();
         $section = new Section();
         $section->name = 'Personal computers';
         $section->category_id = '1';

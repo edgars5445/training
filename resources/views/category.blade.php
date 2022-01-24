@@ -8,10 +8,7 @@
             <ul>
             @foreach ($sections as $section)
                 <li>
-                    <?php $sectionName=$section->name;
-                       $sectionName = strtolower(str_replace(' ', '', $sectionName));
-                    ?>
-                    <a href="{{ route('section',  [$categoryName, $sectionName]) }}"> 
+                    <a href="{{ route('section',  [$categoryName, strtolower($section->name)]) }}"> 
                         <button  class="section">
                             <div class="">
                                 <p class="sec-button">{{ $section->name }} ( : number of posts)</p> 

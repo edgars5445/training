@@ -4,6 +4,10 @@
     margin-top: 7%;
 }
 
+p {
+    color:black;
+}
+
 li {
     position:relative;
     font-size:150%;

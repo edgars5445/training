@@ -14,6 +14,7 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
+        Post::truncate();
         $post = new Post();
         $post->title = 'Apple Iphone 13';
         $post->description = 'Pārdodu mazlietotu Iphone 13 telefonu, vairāk informācijas zvanot pa norādīto telefonu.';

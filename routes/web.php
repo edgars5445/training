@@ -28,3 +28,6 @@ Route::get('/{category}/{section}',[
     SectionController::class, 'index'
 ])->name('section');
 
+Route::post('category/delete',[HomeController::class, 'deleteCategory'])->name('delete.category');
+Route::post('category/edit',[HomeController::class, 'editCategory'])->name('edit.category');
+

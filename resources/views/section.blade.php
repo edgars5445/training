@@ -2,6 +2,7 @@
     <head>
         <title>Training page</title>
         <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
+        <script src="{{ asset("js/section.js") }}" defer></script>
     </head>
     <div class="main-block">
         <div class="main-block sections">    
@@ -21,7 +22,7 @@
                             </div>
                             
                         </button>
-                        <div class="breakline"></div>
+                        <div class="breakline" name="breakline"></div>
                     {{-- </a> --}}
                 </li>            
             @endforeach

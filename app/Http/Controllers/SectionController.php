@@ -8,9 +8,11 @@ use App\Models\Post;
 
 class SectionController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $category, $section)
     {
-        $posts = Post::all();
+        $temp = Section::where('name','=',$section)->get();
+        $sectionID=$temp[0]['id'];
+        $posts = Post::where('section_id', '=', $sectionID)->get();
         return view('section',compact('posts'));
     }
 }
