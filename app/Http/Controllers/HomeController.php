@@ -18,11 +18,12 @@ class HomeController extends Controller
     public function openCategory(Request $request, $category)
     {
         $data=Category::where('name','=',$category)->get()->toArray();
+        $posts=Post::all();
         $categoryID=$data[0]['id'];
-        $categoryName = strtolower($data[0]['name']); 
+        $categoryName = $data[0]['name']; 
         $sections = Section::where('category_id', '=', $categoryID)->get();
         
-        return view('category', compact('sections','categoryName'));
+        return view('category', compact('sections','categoryName','posts'));
     }
 
     public function deleteCategory(Request $request){

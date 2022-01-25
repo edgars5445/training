@@ -3,20 +3,34 @@
         <title>Training page</title>
         <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
     </head>
-    <div class="main-block">
-        <div class="main-block sections">   
+    <div class="urls"><a href="/" class="aurls">Home</a> / {{ $categoryName }}</div>
+    <div class="main-block">  
+        <div class="main-block sections">     
             <ul>
             @foreach ($sections as $section)
                 <li>
-                    <a href="{{ route('section',  [$categoryName, strtolower($section->name)]) }}"> 
+                    <a href="{{ route('section',  [strtolower($categoryName), strtolower($section->name)]) }}"> 
                         <button  class="section">
                             <div class="">
-                                <p class="sec-button">{{ $section->name }} ( : number of posts)</p> 
+                                <?php 
+                                    $postsCount=0;
+                                    foreach ($posts as $post){
+                                        if($post->section_id == $section->id){
+                                            $postsCount+=1;
+                                        }
+                                    }
+                                ?>
+                                <p class="sec-button">{{ $section->name }} ( {{ $postsCount }} )</p> 
                             </div>
                         </button>
                     </a>
+                    
                 </li>            
             @endforeach
+            <?php if ($sections->isEmpty()){
+               echo "There are no sections here, yet!";
+             }?>
+            
             </ul>
         </div>
     </div>

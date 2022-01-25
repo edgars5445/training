@@ -1,7 +1,20 @@
 .main-block {
     width:80%;
     margin:auto; 
-    margin-top: 7%;
+    margin-top: 3%;
+}
+.urls {
+    padding-top:1%;
+    width:60.5%;
+    margin:auto;
+}
+
+.aurls {
+    color:black;
+}
+
+.aurls:hover {
+    color: black;
 }
 
 p {

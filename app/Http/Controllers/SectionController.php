@@ -12,7 +12,9 @@ class SectionController extends Controller
     {
         $temp = Section::where('name','=',$section)->get();
         $sectionID=$temp[0]['id'];
-        $posts = Post::where('section_id', '=', $sectionID)->get();
-        return view('section',compact('posts'));
+        $posts = Post::where('section_id', '=', $sectionID)->paginate(10);
+        $categoryName = ucfirst($category);
+        $sectionName = ucfirst($section);
+        return view('section',compact('posts','categoryName','sectionName'));
     }
 }

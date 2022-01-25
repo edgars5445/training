@@ -59,11 +59,11 @@ div.breakline {
 }
 
 .delete-cat:hover{
-    background-color: red;
-    transition: background-color 200ms linear;
+    background-color: #c80815;
+    transition: background-color 100ms linear;
 }
 
 .edit-cat:hover{
     background-color: yellow;
-    transition: background-color 200ms linear;
+    transition: background-color 100ms linear;
 }
