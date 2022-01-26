@@ -23,12 +23,12 @@ class CategorySeeder extends Seeder
 
         $category = new Category();
         $category->name = 'Internet';
-        $category->image ='https://thumbs.dreamstime.com/b/internet-icon-internet-symbol-wireless-technology-vector-illustration-internet-icon-internet-symbol-wireless-technology-vector-130697530.jpg';
+        $category->image ='http://cdn.onlinewebfonts.com/svg/img_190618.png';
         $category->save();
 
         $category = new Category();
         $category->name = 'Cars and stuff';
-        $category->image='https://static.vecteezy.com/system/resources/thumbnails/003/694/243/small/car-icon-in-flat-style-simple-traffic-icon-free-vector.jpg';
+        $category->image='https://iconape.com/wp-content/png_logo_vector/car-3.png';
         $category->save();
     }
 }

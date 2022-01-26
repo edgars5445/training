@@ -15,15 +15,16 @@ class HomeController extends Controller
         return view('home',compact('categories'));
     }
 
-    public function openCategory(Request $request, $category)
+    public function openCategory(Request $request)
     {
-        $data=Category::where('name','=',$category)->get()->toArray();
+        $category = $request->category;
+        $data=Category::where('name','=',$category)->get()->first();
         $posts=Post::all();
-        $categoryID=$data[0]['id'];
-        $categoryName = $data[0]['name']; 
+        $categoryID=$data->id;
+        $categoryName = $data->name; 
         $sections = Section::where('category_id', '=', $categoryID)->get();
-        
         return view('category', compact('sections','categoryName','posts'));
+
     }
 
     public function deleteCategory(Request $request){
@@ -50,4 +51,10 @@ class HomeController extends Controller
                 ]);
         return redirect()->intended();
     }
+
+    public function newPost(Request $request)
+    {
+        return redirect()->intended();
+    }
+    
 }

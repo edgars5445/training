@@ -3,14 +3,67 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                
-
                 <!-- Navigation Links -->
                 <div class="hidden sm:-my-px sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-decoration-none home-button ml-5">
                         {{ __('Home') }}
                     </x-nav-link>
+
+                    @auth
+                        @if(Auth::user()->role >=1)
+                       
+
+                        <!-- Button trigger modal -->
+                        <x-nav-link class="text-decoration-none home-button ml-5">
+                            <button type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                New post
+                            </button>
+                        </x-nav-link>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Make new post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{{action([App\Http\Controllers\HomeController::class, 'newPost']) }}">
+                                        @csrf
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary" >Post</button>
+                                {{-- data-bs-toggle="modal" data-bs-target="#staticBackdrop2"  --button attributes, which are needed to move on to next modal --}}
+                                {{-- Also, a fix needs to be made in after posting -> returns back to the same page -> aftewards with ajax  --}}
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <!-- Modal 2  -->
+                        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Pay for the publication</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{-- <form method="POST" action="{{action([App\Http\Controllers\HomeController::class, 'editCategory']) }}">
+                                        @csrf --}}
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Back</button>
+                                <button type="button" class="btn btn-primary">Post</button>
+                                    {{-- </form> --}}
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        @endif
+                    @endauth
                 </div>
             </div>
 
@@ -38,7 +91,7 @@
                             <x-dropdown-link href="/register" class="text-decoration-none">Register</x-dropdown-link>
                             @endguest
                             @auth
-                            {{-- <x-dropdown-link :href="route('profile.index')">Settings'</x-dropdown-link> --}}
+                            <x-dropdown-link :href="route('profile.index')">Settings</x-dropdown-link> 
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();" class="text-decoration-none">

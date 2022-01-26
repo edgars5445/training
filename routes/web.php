@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ Route::get('/', [
     HomeController::class, 'index'
 ])->name('dashboard');
 
+Route::get('/profile', [ProfileController::class, 'openProfile'])->name('profile.index');
+
 Route::get('/{category}',[
     HomeController::class, 'openCategory'
 ])->name('category');
@@ -30,4 +33,8 @@ Route::get('/{category}/{section}',[
 
 Route::post('category/delete',[HomeController::class, 'deleteCategory'])->name('delete.category');
 Route::post('category/edit',[HomeController::class, 'editCategory'])->name('edit.category');
+
+Route::post('new/post',[HomeController::class, 'newPost'])->name('new.post');
+
+
 
