@@ -3,6 +3,8 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Category;
+use App\Models\Section;
 
 class AppLayout extends Component
 {
@@ -13,6 +15,8 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('layouts.app');
+        $categories = Category::all();
+        $sections = Section::all();
+        return view('layouts.app',compact('categories','sections'));
     }
 }

@@ -22,7 +22,7 @@ class SectionSeeder extends Seeder
 
         $section = new Section();
         $section->name = 'Laptops';
-        $section->category_id = '1';
+        $section->category_id = '2';
         $section->save();
 
         $section = new Section();

@@ -23,6 +23,8 @@ Route::get('/', [
 
 Route::get('/profile', [ProfileController::class, 'openProfile'])->name('profile.index');
 
+Route::post('new/post',[HomeController::class, 'newPost'])->name('new.post');
+
 Route::get('/{category}',[
     HomeController::class, 'openCategory'
 ])->name('category');
@@ -34,7 +36,6 @@ Route::get('/{category}/{section}',[
 Route::post('category/delete',[HomeController::class, 'deleteCategory'])->name('delete.category');
 Route::post('category/edit',[HomeController::class, 'editCategory'])->name('edit.category');
 
-Route::post('new/post',[HomeController::class, 'newPost'])->name('new.post');
 
 
 

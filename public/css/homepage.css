@@ -67,3 +67,7 @@ div.breakline {
     background-color: yellow;
     transition: background-color 100ms linear;
 }
+
+.w35 {
+    width:35%;
+}
