@@ -23,7 +23,8 @@ Route::get('/', [
 
 Route::get('/profile', [ProfileController::class, 'openProfile'])->name('profile.index');
 
-Route::post('new/post',[HomeController::class, 'newPost'])->name('new.post');
+Route::post('/new/post',[HomeController::class, 'newPost'])->name('new.post');
+Route::post('/new/post2',[HomeController::class, 'newPostAjax'])->name('new.post2');
 
 Route::get('/{category}',[
     HomeController::class, 'openCategory'

@@ -23,6 +23,7 @@ class HomeController extends Controller
         $categoryID=$data->id;
         $categoryName = $data->name; 
         $sections = Section::where('category_id', '=', $categoryID)->get();
+        
         return view('category', compact('sections','categoryName','posts'));
 
     }
@@ -54,7 +55,7 @@ class HomeController extends Controller
 
     public function newPost(Request $request)
     {
-        var_dump($request->all());
+
         $post = new Post();
         $post->title = $request->title;
         $post->description = $request->description;
@@ -69,9 +70,23 @@ class HomeController extends Controller
         $categoryData = Category::where('id','=',$sectionID)->get();
         $categoryName = $categoryData[0]['name'];
         $posts = Post::where('section_id', '=', $sectionID)->paginate(10);
+        $post = Post::latest('id')->first();
 
-        // kr4 jāpieliek lai aiziet pie pēdēja posta #post beigās (gjau href jaliek postiem) 
-        return redirect('/' . $categoryName .'/'.$sectionName.'?page=' . $posts);
+        return redirect('/' . $categoryName .'/'.$sectionName.'?page=' . $posts->lastpage() .'#'. $post->id);
+    }
+
+    public function newPostAjax(Request $request)
+    {
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->image = $request->image;
+        $post->section_id = $request->section_id;
+        $post->price = $request->price;
+        $post->save();
+
+        return array($request->image, $request->title, $request->description,  $request->price);
     }
     
 }

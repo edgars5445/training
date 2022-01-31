@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100"> 
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 sticky-top"> 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
@@ -7,83 +7,30 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-decoration-none home-button ml-5">
                         {{ __('Home') }}
                     </x-nav-link>
+                    
+                        @guest
+                            <x-nav-link href="/login" class="text-decoration-none home-button ml-5">
+                                <button type="button">
+                                    New post
+                                </button>
+                            </x-nav-link> 
+                        @endguest
 
-                    @auth
-                        @if(Auth::user()->role >=1)
-                       
+                        @auth
+                            <!-- Button trigger modal -->
+                            <x-nav-link class="text-decoration-none home-button ml-5">
+                                <button type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    New post
+                                </button>
+                            </x-nav-link>                          
+                        @endauth
 
-                        <!-- Button trigger modal -->
-                        <x-nav-link class="text-decoration-none home-button ml-5">
-                            <button type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                New post
-                            </button>
-                        </x-nav-link>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Make new post</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="POST" action="{{action([App\Http\Controllers\HomeController::class, 'newPost']) }}">
-                                        @csrf
-                                        <div class="text-center">
-                                            <input class="w-75" type="text" name="title" placeholder="Title"><br>
-                                            <textarea class="w-75" name="description" id="description" placeholder="Description" style="height: 150px;"></textarea><br>
-                                            <input class="h-50 w-75" type="text" name="image" id="image" placeholder="Image link"><br>
-                                            <input class = "w35" type="text" name="price" id="price" placeholder="Price"><br>
-
-                                            <select class = "w35" onchange="val()" name="" id="select_id" >
-                                                <option disabled selected value> -- Select category -- </option>
-                                                @foreach($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
-                                            </select><br>
-                                                
-                                            <select class = "w35" name="section_select" id="section_select" >
-                                                <option disabled selected value=0> -- Nothing to select -- </option>
-                                                @foreach($sections as $section)
-                                                    <option value="{{ $section->category_id }}" name="section_id" style="display: none;">{{ $section->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>    
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" >Post</button>
-
-                                {{-- data-bs-toggle="modal" data-bs-target="#staticBackdrop2"  --button attributes, which are needed to move on to next modal --}}
-                                {{-- Also, a fix needs to be made in after posting -> returns back to the same page -> aftewards with ajax  --}}
-                                    </form>
-                                </div>
-                            </div>
-                            </div>
-                            </div>
-                            <!-- Modal 2  -->
-                            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Pay for the publication</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        {{-- <form method="POST" action="{{action([App\Http\Controllers\HomeController::class, 'editCategory']) }}">
-                                            @csrf --}}
-                                    </div>
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Back</button>
-                                    <button type="button" class="btn btn-primary">Post</button>
-                                        {{-- </form> --}}
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endauth
+                        @php
+                        $route = Route::current()->getName();
+                        @endphp
+    
+                        
+                        
                 </div>
             </div>
 
@@ -167,3 +114,71 @@
         </div>
     </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Make new post</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{action([App\Http\Controllers\HomeController::class, 'newPost']) }}">
+                @csrf
+                <div class="text-center">
+                    <input class="w-75 postTitle" type="text" name="title" placeholder="Title"><br>
+                    <textarea class="w-75 postDescription" name="description" id="description" placeholder="Description" style="height: 150px;"></textarea><br>
+                    <input class="h-50 w-75 postImage" type="text" name="image" id="image" placeholder="Image link"><br>
+                    <input class = "w35 postPrice" type="text" name="price" id="price" placeholder="Price"><br>
+
+                    <select class = "w35 categorySelect" name="select_id" id="category_select" >
+                        <option disabled selected value> -- Select category -- </option>
+                        @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select><br>
+                        
+                    <select class = "w35 postSelect" name="section_select" id="section_select" >
+                        <option disabled selected value=0> -- Select section -- </option>
+                        @foreach($sections as $section)
+                            <option value="{{ $section->id }}" name="{{ $section->category_id }}">{{ $section->name }}</option>
+                        @endforeach
+                    </select>
+                </div>    
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <input type="hidden" value="{{ $route }}" id="routeName">
+        @if($route == 'section')
+            <button type="button" class="btn btn-primary" id="post-button" data-bs-dismiss="modal">Post</button>
+        @else
+            <button type="submit" class="btn btn-primary">Post</button>
+        @endif
+            {{-- data-bs-toggle="modal" data-bs-target="#staticBackdrop2"  --button post attributes, which are needed to move on to next modal --}}
+            {{-- Also, a fix needs to be made in after posting -> returns back to the same page -> aftewards with ajax  --}}
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- Modal 2  -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Pay for the publication</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {{-- <form method="POST" action="{{action([App\Http\Controllers\HomeController::class, 'editCategory']) }}">
+                    @csrf --}}
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Back</button>
+            <button type="button" class="btn btn-primary">Post</button>
+                {{-- </form> --}}
+            </div>
+        </div>
+        </div>
+</div>

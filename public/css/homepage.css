@@ -37,7 +37,7 @@ p {
     transition: background-color 200ms linear;
 }
 
-div.breakline {
+.breakline {
     border-bottom: 1px solid black;
     margin:2% 0;
 }
