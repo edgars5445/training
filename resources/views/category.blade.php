@@ -3,13 +3,13 @@
         <title>Training page</title>
         <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
     </head>
-    <div class="urls"><a href="/" class="aurls">Home</a> / {{ $categoryName }}</div>
+    <div class="kurls"><a href="/" class="aurls">Home</a> / {{ $categoryName }}</div>
     <div class="main-block">  
         <div class="main-block sections">     
             <ul>
             @foreach ($sections as $section)
                 <li>
-                    <a href="{{ route('section',  [strtolower($categoryName), strtolower($section->name)]) }}"> 
+                    <a href="{{ route('section',  [strtolower($categoryName), strtolower($section->name)]) }}" onclick="window.localStorage.clear();"> 
                         <button  class="section">
                             <div class="">
                                 <?php 

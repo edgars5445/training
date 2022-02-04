@@ -81,7 +81,7 @@ class PostSeeder extends Seeder
         $post->save();
 
         $post = new Post();
-        $post->title = 'Apple Iphone 20';
+        $post->title = 'Apple Iphone 19';
         $post->description = 'Pārdodu mazlietotu Iphone 14 telefonu, vairāk informācijas zvanot pa norādīto telefonu. Es zinu, ka tāds vēl nav izgājis, bet šis ir insider telefons.';
         $post->price = 1300;
         $post->image = 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000';
@@ -89,11 +89,51 @@ class PostSeeder extends Seeder
         $post->save();
 
         $post = new Post();
-        $post->title = 'Apple Iphone 21';
+        $post->title = 'Apple Iphone 19';
         $post->description = 'Pārdodu mazlietotu Iphone 12 telefonu, vairāk informācijas zvanot pa norādīto telefonu. Ja vēlāties papildus garantiju, tad nezvaniet, jo nav tādas.';
         $post->price = 1600;
         $post->image = 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000';
-        $post->section_id = '2';
+        $post->section_id = '1';
+        $post->save();
+
+        $post = new Post();
+        $post->title = 'Apple Iphone 19';
+        $post->description = 'Pārdodu mazlietotu Iphone 14 telefonu, vairāk informācijas zvanot pa norādīto telefonu. Es zinu, ka tāds vēl nav izgājis, bet šis ir insider telefons.';
+        $post->price = 1700;
+        $post->image = 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000';
+        $post->section_id = '1';
+        $post->save();
+
+        $post = new Post();
+        $post->title = 'Apple Iphone 19';
+        $post->description = 'Pārdodu mazlietotu Iphone 12 telefonu, vairāk informācijas zvanot pa norādīto telefonu. Ja vēlāties papildus garantiju, tad nezvaniet, jo nav tādas.';
+        $post->price = 1900;
+        $post->image = 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000';
+        $post->section_id = '1';
+        $post->save();
+        
+        $post = new Post();
+        $post->title = 'Apple Iphone 19';
+        $post->description = 'Pārdodu mazlietotu Iphone 12 telefonu, vairāk informācijas zvanot pa norādīto telefonu. Ja vēlāties papildus garantiju, tad nezvaniet, jo nav tādas.';
+        $post->price = 2100;
+        $post->image = 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000';
+        $post->section_id = '1';
+        $post->save();
+        
+        $post = new Post();
+        $post->title = 'Apple Iphone 19';
+        $post->description = 'Pārdodu mazlietotu Iphone 14 telefonu, vairāk informācijas zvanot pa norādīto telefonu. Es zinu, ka tāds vēl nav izgājis, bet šis ir insider telefons.';
+        $post->price = 2000;
+        $post->image = 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000';
+        $post->section_id = '1';
+        $post->save();
+
+        $post = new Post();
+        $post->title = 'Apple Iphone 19';
+        $post->description = 'Pārdodu mazlietotu Iphone 12 telefonu, vairāk informācijas zvanot pa norādīto telefonu. Ja vēlāties papildus garantiju, tad nezvaniet, jo nav tādas.';
+        $post->price = 200;
+        $post->image = 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-family-hero?wid=940&hei=1112&fmt=png-alpha&.v=1631220221000';
+        $post->section_id = '1';
         $post->save();
 
         $post = new Post();

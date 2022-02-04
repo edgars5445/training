@@ -1,36 +1,34 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 sticky-top"> 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex">
+            <div class="flex nav-links">
                 <!-- Navigation Links -->
-                <div class="hidden sm:-my-px sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-decoration-none home-button ml-5">
+                <div class="hidden sm:flex">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-decoration-none home-button">
                         {{ __('Home') }}
                     </x-nav-link>
                     
                         @guest
-                            <x-nav-link href="/login" class="text-decoration-none home-button ml-5">
+                            <x-nav-link href="/login" class="text-decoration-none">
                                 <button type="button">
                                     New post
                                 </button>
                             </x-nav-link> 
                         @endguest
+                        
+                        <div class="nav-divider"></div>
 
                         @auth
                             <!-- Button trigger modal -->
-                            <x-nav-link class="text-decoration-none home-button ml-5">
+                            <x-nav-link class="text-decoration-none nav-button">
                                 <button type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     New post
                                 </button>
                             </x-nav-link>                          
                         @endauth
-
                         @php
                         $route = Route::current()->getName();
-                        @endphp
-    
-                        
-                        
+                        @endphp                 
                 </div>
             </div>
 
@@ -139,10 +137,17 @@
                         @endforeach
                     </select><br>
                         
-                    <select class = "w35 postSelect" name="section_select" id="section_select" >
+                    @php
+                        $r = $_SERVER['REQUEST_URI']; 
+                        $r = explode('/', $r);
+                        $r = array_filter($r);
+                        $r = array_merge($r, array()); 
+                        $endofurl = ucfirst(str_replace('%20',' ',end($r)));
+                    @endphp
+                    <select class = "w35 postSelect" name="section_select" id="section_select" onchange="checkCategory(this)">
                         <option disabled selected value=0> -- Select section -- </option>
                         @foreach($sections as $section)
-                            <option value="{{ $section->id }}" name="{{ $section->category_id }}">{{ $section->name }}</option>
+                            <option value="{{ $section->id }}" name="{{ $section->category_id }}" >{{ $section->name }}</option>
                         @endforeach
                     </select>
                 </div>    
@@ -150,11 +155,9 @@
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <input type="hidden" value="{{ $route }}" id="routeName">
-        @if($route == 'section')
+
             <button type="button" class="btn btn-primary" id="post-button" data-bs-dismiss="modal">Post</button>
-        @else
-            <button type="submit" class="btn btn-primary">Post</button>
-        @endif
+
             {{-- data-bs-toggle="modal" data-bs-target="#staticBackdrop2"  --button post attributes, which are needed to move on to next modal --}}
             {{-- Also, a fix needs to be made in after posting -> returns back to the same page -> aftewards with ajax  --}}
             </form>

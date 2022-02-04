@@ -19,12 +19,15 @@ class HomeController extends Controller
     {
         $category = $request->category;
         $data=Category::where('name','=',$category)->get()->first();
+        if($data){
         $posts=Post::all();
         $categoryID=$data->id;
         $categoryName = $data->name; 
         $sections = Section::where('category_id', '=', $categoryID)->get();
         
         return view('category', compact('sections','categoryName','posts'));
+        }
+        return redirect()->intended();
 
     }
 

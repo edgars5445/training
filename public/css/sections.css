@@ -1,12 +1,17 @@
 .main-block {
     width:80%;
     margin:auto; 
-    margin-top: 3%;
+    margin-top:2%;
 }
+
 .urls {
-    padding-top:1%;
+    margin:3% 0;
+}
+
+.kurls {
     width:60.5%;
-    margin:auto;
+    margin: auto;
+    margin-top:1%;
 }
 
 .aurls {
@@ -73,4 +78,51 @@ div.breakline {
     border-bottom:1px solid black;
     margin-top:2%;
     margin-bottom: 2%;
+}
+
+.copy-button {
+    position:absolute;
+    right:0;
+    font-size: 80%;
+}
+
+.filters{
+    align-items: center;
+    width: 17%;
+    margin: 1% 0% 0% 2%;
+    position:fixed;
+
+}
+
+.filter-button{
+
+    padding:2%;
+    width:22%;
+    margin-left:39%;
+    border:1px solid black;
+    border-radius: 5%;
+}
+
+.filter-button:hover{
+    background-color: greenyellow;
+}
+
+div.breaklineFilter {
+    border-bottom:1px solid black;
+    margin-top:2%;
+    margin-bottom: 2%;
+    width:80%;
+    margin-left:10%;
+}
+
+.center{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.links{
+    margin-top:5%;
+    margin:auto;
+    width:75%;
 }

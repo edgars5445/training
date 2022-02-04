@@ -13,6 +13,20 @@
 //     }
 // }
 
+function checkCategory(select){
+    let paths = window.location.pathname.split("/");
+    let endofurl = paths[paths.length - 1];
+    let postsCount = $("#ulClass li").length;
+    endofurl = endofurl.replace(/%20/g, " ");
+    endofurl = endofurl.charAt(0).toUpperCase() + endofurl.slice(1);
+    let button = document.getElementById('post-button');
+    if(select.options[select.selectedIndex].text == endofurl && postsCount < 10){
+        button.type = "button";
+    } else {
+        button.type = "submit";
+    }
+}
+
 var select = document.getElementById("section_select");
 $("#category_select").on('change', function() {
     var category_id = document.getElementById("category_select").value;
