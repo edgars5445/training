@@ -22,18 +22,19 @@ Route::get('/', [
     HomeController::class, 'index'
 ])->name('dashboard');
 
+Route::post('/report',[
+    SectionController::class, 'reportUser'
+])->name('post.report');
+
 Route::get('{category}/{section}/search',[
     SectionController::class, 'filter'
 ])->name('section.search');
-
-
 
 
 Route::get('/profile', [ProfileController::class, 'openProfile'])->name('profile.index');
 
 Route::post('/new/post',[HomeController::class, 'newPost'])->name('new.post');
 Route::post('/new/post2',[HomeController::class, 'newPostAjax'])->name('new.post2');
-
 
 
 Route::get('/{category}',[

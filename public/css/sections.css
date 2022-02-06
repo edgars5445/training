@@ -126,3 +126,9 @@ div.breaklineFilter {
     margin:auto;
     width:75%;
 }
+
+.report-button{
+    border: 1px solid black;
+    border-radius: 20px;
+    padding:4px 4px;
+}

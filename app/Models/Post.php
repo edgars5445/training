@@ -14,9 +14,14 @@ class Post extends Model
         'image',
         'description',
         'price',
+        'user_id'
     ];
 
     public function section() {
         return $this->belongsTo(Section::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

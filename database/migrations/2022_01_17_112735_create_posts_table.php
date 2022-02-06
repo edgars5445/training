@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->integer('price');
             $table->string('image')->default('');
             $table->foreignId('section_id')->constrained('sections');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
     }

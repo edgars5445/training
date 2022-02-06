@@ -3,6 +3,7 @@
         <title>Training page</title>
         <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
         <script src="{{ asset("js/section.js") }}" defer></script>
+        <script src="{{ asset("js/sectionAjax.js") }}" defer></script>
     </head>
     <div class="filters">
         <div class="urls"><a href="/" class="aurls">Home</a> / <a href="{{ route('category', [strtolower($category)]) }}" class="aurls">{{ $category}}</a> / {{ $section }} </div>
@@ -44,6 +45,38 @@
                                     </div> 
                                 </div>
                             </button>
+                            
+                            {{-- Modal launch --}}
+                            @auth
+                            <button type="submit" class="report-button" data-bs-toggle="modal" data-bs-target="#reportModal{{ $post->id }}" data-userid = "{{ $post->user_id }}" data-postid="{{ $post->id }}">
+                                Report
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="reportModal{{ $post->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Report "{{ $post->title }}"</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <select name="report_select" id="report_select" class="report_select{{ $post->id }}">
+                                            <option disabled selected value>-- Select report --</option>
+                                            <option value="Wrong_section">Wrong section</option>
+                                            <option value="Spam">Spam</option>
+                                            <option value="Offensive_title/description">Offensive title/description</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary submit-report{{ $post->id }}" data-bs-dismiss="modal" id="report-button">Report</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            @endauth
+                            
                             <div class="breakline" name="breakline"></div>
                         {{-- </a> --}}
                     </li>            

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Section;
 use App\Models\Post;
+use App\Models\Report;
 use Illuminate\Pagination\Paginator;
+use Response;
 
 class SectionController extends Controller
 {
@@ -51,5 +53,15 @@ class SectionController extends Controller
             $posts = $posts->where('title', 'like', '%' . $request->search . '%')->paginate(10);
         }
         return view('section',[$category,$section],compact('posts','category','section','priceFilter','searchFilter'));
+    }
+
+    public function reportUser(Request $request)
+    {
+        $report = new Report();
+        $report->report = $request->report;
+        $report->post_id = $request->postId;
+        $report->user_id = $request->userId;
+        $report->save();
+        return;
     }
 }

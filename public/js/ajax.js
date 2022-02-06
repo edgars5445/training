@@ -1,4 +1,4 @@
-let postButton = document.getElementById("post-button");
+var postButton = document.getElementById("post-button");
 var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 var postsCount = $("#ulClass li").length;
 let routeName = document.getElementById("routeName").value;
