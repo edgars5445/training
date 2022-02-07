@@ -1,0 +1,65 @@
+.main-block {
+    width:80%;
+    margin-left: 10%;
+    height:90vh;
+    overflow: hidden;
+    position:absolute;
+}
+
+.reports-block{
+    width: 25%;
+    display:inline-block;
+    position:relative;
+    margin-top:5%;
+    height: 90%;
+    border:1px rgb(163, 163, 163) solid;
+    overflow-y: auto;
+    border-radius: 10px;
+    
+}
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(163, 163, 163);
+    border-radius: 10px;
+  }
+
+.posts-block{
+    width: 70%;
+    margin-left: 5%;
+    position:absolute;
+    margin-top: 5%;
+    height: 90%;
+    display:inline-block;
+    border: 1px solid rgb(163, 163, 163);
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+.report {
+    border-bottom:rgb(163, 163, 163) solid 1px;
+}
+
+.post{
+    border-bottom:rgb(163, 163, 163) solid 1px;
+    border-radius: 10px;
+}
+
+.post:nth-child(odd) {
+    background-color:#e6e6e6;
+}
+.post-report {
+    border-style: dotted none none none;
+    border-color: rgb(163, 163, 163);
+    border-width: 2px;
+}

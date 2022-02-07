@@ -24,7 +24,13 @@
                                 <button type="button"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     New post
                                 </button>
-                            </x-nav-link>                          
+                            </x-nav-link>   
+                            
+                            @if(Auth::user()->role > 1)
+                            <x-nav-link class="text-decoration-none nav-button" :href="route('admin.panel')" :active="request()->routeIs('admin.panel')">
+                                {{ __('Admin panel') }}
+                            </x-nav-link>  
+                            @endif
                         @endauth
                         @php
                         $route = Route::current()->getName();

@@ -4,6 +4,9 @@
         <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
         <script src="{{ asset("js/homepage.js") }}" defer></script>
     </head>
+    @if($errors->any())
+        {{ implode('', $errors->all(':message')) }}
+    @endif
     <div class="main-block">
         <div class="main-block categories">    
             <ul>

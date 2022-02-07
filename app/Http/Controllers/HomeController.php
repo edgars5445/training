@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Section;
 use App\Models\Post;
+use App\Models\Report;
 
 class HomeController extends Controller
 {
@@ -92,4 +93,9 @@ class HomeController extends Controller
         return array($request->image, $request->title, $request->description,  $request->price);
     }
     
+    public function admin (Request $request){
+        $reports = Report::orderBy('id','asc')->get();
+        $posts = Post::all();
+        return view('admin',compact('reports','posts'));
+    }
 }

@@ -30,6 +30,9 @@ Route::get('{category}/{section}/search',[
     SectionController::class, 'filter'
 ])->name('section.search');
 
+Route::get('/admin', [
+    HomeController::class,'admin'
+])->name('admin.panel')->middleware('auth.admin');
 
 Route::get('/profile', [ProfileController::class, 'openProfile'])->name('profile.index');
 
