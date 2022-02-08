@@ -34,6 +34,10 @@ Route::get('/admin', [
     HomeController::class,'admin'
 ])->name('admin.panel')->middleware('auth.admin');
 
+Route::delete('/admin/ticket/delete',[
+    HomeController::class,'reportDismiss'
+])->name('admin.ticketDelete')->middleware('auth.admin');
+
 Route::get('/profile', [ProfileController::class, 'openProfile'])->name('profile.index');
 
 Route::post('/new/post',[HomeController::class, 'newPost'])->name('new.post');

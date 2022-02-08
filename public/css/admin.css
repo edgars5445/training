@@ -47,17 +47,43 @@
 }
 
 .report {
-    border-bottom:rgb(163, 163, 163) solid 1px;
+    border-bottom:rgb(163, 163, 163) solid 3px;
+    cursor: pointer;
 }
 
-.post{
-    border-bottom:rgb(163, 163, 163) solid 1px;
+.report-info:hover{
+    background-color:#eef58a !important;
+}
+
+.report-buttons{
+    border-top:rgb(163, 163, 163) dotted 1px;
+    cursor:auto;
+    text-align: center;
+    padding:1% 2%;
+}
+
+div.report-buttons button {
+    border:1px solid rgb(163, 163, 163);
     border-radius: 10px;
 }
 
-.post:nth-child(odd) {
-    background-color:#e6e6e6;
+.report-dismiss:hover{
+    background-color: rgba(168, 38, 38, 0.9);
 }
+
+.report-resolve:hover{
+    background-color: rgba(50, 163, 6, 0.9);
+}
+
+div.report-info p:last-child {
+    margin-bottom: 0;
+}
+
+.post{
+    border-bottom:rgb(163, 163, 163) solid 3px;
+
+}
+
 .post-report {
     border-style: dotted none none none;
     border-color: rgb(163, 163, 163);

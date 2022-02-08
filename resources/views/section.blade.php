@@ -48,7 +48,7 @@
                             
                             {{-- Modal launch --}}
                             @auth
-                            <button type="submit" class="report-button" data-bs-toggle="modal" data-bs-target="#reportModal{{ $post->id }}" data-userid = "{{ $post->user_id }}" data-postid="{{ $post->id }}">
+                            <button type="submit" class="report-button" data-bs-toggle="modal" data-bs-target="#reportModal{{ $post->id }}" data-userid = "{{ $post->user_id }}" data-postid="{{ $post->id }}" data-reporterId="{{ Auth::user()->id }}">
                                 Report
                             </button>
 

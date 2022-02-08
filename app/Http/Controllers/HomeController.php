@@ -98,4 +98,10 @@ class HomeController extends Controller
         $posts = Post::all();
         return view('admin',compact('reports','posts'));
     }
+
+    public function reportDismiss(Request $request)
+    {
+        Report::find($request->report_id)->delete($request->report_id);
+        return response(200);
+    }
 }
