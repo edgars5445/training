@@ -42,3 +42,45 @@ reportDismissButtons.forEach((button) => {
         )   
     });
 });
+
+reportResolveButtons = document.querySelectorAll(".report-resolve");
+
+reportResolveButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        let post_id = button.dataset.postId;
+        let category = document.querySelector(".postCategory"+post_id).value;
+        let section = document.querySelector(".postSection"+ post_id).value;
+        let checkBox = document.querySelector(".deletePost"+post_id).checked;
+
+        let reportid = button.dataset.reportId;
+        let reportBox = document.querySelector('.reportDiv' + reportid);
+        let reportParent = reportBox.parentNode;
+        let postBox = document.querySelector('.post' + button.dataset.postId);
+        let postParent = postBox.parentNode;
+        
+        console.log(checkBox);
+        $.ajax({
+            url: "/admin/ticket/update",
+            type: 'PATCH',
+            data: {
+                report_id: reportid,
+                post_id: post_id,
+                category_id: category,
+                section_id: section,
+                check_box_value: checkBox,
+                _token: CSRF_TOKEN
+            }, 
+            success: function(response) {
+                reportBox.remove();
+                postBox.remove();
+                if(reportParent.childElementCount == 0){
+                    reportParent.append("There are no reports to review!")
+                }
+                if(postParent.childElementCount == 0){
+                    postParent.append("Open a ticket, if you want to review it in more detail!")
+                }
+            }
+        }
+        )   
+    });
+});

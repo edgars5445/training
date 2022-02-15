@@ -10,7 +10,7 @@
     width: 25%;
     display:inline-block;
     position:relative;
-    margin-top:5%;
+    margin-top:3%;
     height: 90%;
     border:1px rgb(163, 163, 163) solid;
     overflow-y: auto;
@@ -38,7 +38,7 @@
     width: 70%;
     margin-left: 5%;
     position:absolute;
-    margin-top: 5%;
+    margin-top: 3%;
     height: 90%;
     display:inline-block;
     border: 1px solid rgb(163, 163, 163);

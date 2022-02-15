@@ -66,6 +66,7 @@ class HomeController extends Controller
         $post->image = $request->image;
         $post->section_id = $request->section_select;
         $post->price = $request->price;
+        $post->user_id = $request->user_id;
         $post->save();
 
         $sectionData = Section::where('id','=',$request->section_select)->get();
@@ -88,6 +89,7 @@ class HomeController extends Controller
         $post->image = $request->image;
         $post->section_id = $request->section_id;
         $post->price = $request->price;
+        $post->user_id = $request->user_id;
         $post->save();
 
         return array($request->image, $request->title, $request->description,  $request->price);
@@ -96,12 +98,34 @@ class HomeController extends Controller
     public function admin (Request $request){
         $reports = Report::orderBy('id','asc')->get();
         $posts = Post::all();
-        return view('admin',compact('reports','posts'));
+        $categories = Category::all();
+        $sections = Section::all();
+        return view('admin',compact('reports','posts','categories','sections'));
     }
 
     public function reportDismiss(Request $request)
     {
-        Report::find($request->report_id)->delete($request->report_id);
+        Report::find($request->report_id)->delete();
         return response(200);
+        // ari vaig, kad response failed uztaisit
+    }
+
+    public function reportResolve(Request $request)
+    {
+        $checkValue = $request->check_box_value;
+        if($checkValue == 'true'){
+            Post::find($request->post_id)->delete();
+            Report::find($request->report_id)->delete();
+            return response('The post is gone', 200);
+        } 
+
+        $post = Post::find($request->post_id);
+        $post->section_id = $request->section_id;
+        $post->save();
+
+        Report::find($request->report_id)->delete($request->report_id);
+        // ari vaig, kad response failed uztaisit
+        return response(200);
+        
     }
 }

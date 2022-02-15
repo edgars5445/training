@@ -30,13 +30,21 @@ Route::get('{category}/{section}/search',[
     SectionController::class, 'filter'
 ])->name('section.search');
 
-Route::get('/admin', [
+Route::get('/admin/tickets', [
     HomeController::class,'admin'
-])->name('admin.panel')->middleware('auth.admin');
+])->name('admin.tickets')->middleware('auth.admin');
+
+Route::get('/admin/users', [
+    HomeController::class,'admin'
+])->name('admin.users')->middleware('auth.admin');
 
 Route::delete('/admin/ticket/delete',[
     HomeController::class,'reportDismiss'
 ])->name('admin.ticketDelete')->middleware('auth.admin');
+
+Route::patch('/admin/ticket/update',[
+    HomeController::class,'reportResolve'
+])->name('admin.ticketResolve')->middleware('auth.admin');
 
 Route::get('/profile', [ProfileController::class, 'openProfile'])->name('profile.index');
 

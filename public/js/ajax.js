@@ -12,10 +12,12 @@ if(postButton.type == "button" && postsCount < 10){
             let postsContainer = document.querySelector(".ajaxDiv");
             let postSection = document.querySelector(".postSelect").value;
             let postCategory = document.querySelector(".categorySelect").value;
+            let user_id = document.querySelector(".userID").value;
+            console.log(user_id);
             
             $.post(
                 "/new/post2",
-                {image: postImage, title: postTitle, description: postDescription, price: postPrice, section_id: postSection, category_id: postCategory, _token: CSRF_TOKEN},
+                {image: postImage, title: postTitle, description: postDescription, price: postPrice, section_id: postSection, category_id: postCategory,user_id: user_id, _token: CSRF_TOKEN},
                 function(data) {
                     let post = `<li>
                     <button class="section">

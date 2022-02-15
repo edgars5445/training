@@ -57,6 +57,10 @@ class SectionController extends Controller
 
     public function reportUser(Request $request)
     {
+        if(Report::where('post_id','=',$request->postId)->exists()){
+            return;
+        }
+        
         $report = new Report();
         $report->report = $request->report;
         $report->post_id = $request->postId;

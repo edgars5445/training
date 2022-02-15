@@ -27,7 +27,7 @@
                             </x-nav-link>   
                             
                             @if(Auth::user()->role > 1)
-                            <x-nav-link class="text-decoration-none nav-button" :href="route('admin.panel')" :active="request()->routeIs('admin.panel')">
+                            <x-nav-link class="text-decoration-none nav-button" :href="route('admin.tickets')" :active="request()->routeIs('admin.panel')">
                                 {{ __('Admin panel') }}
                             </x-nav-link>  
                             @endif
@@ -135,7 +135,9 @@
                     <textarea class="w-75 postDescription" name="description" id="description" placeholder="Description" style="height: 150px;"></textarea><br>
                     <input class="h-50 w-75 postImage" type="text" name="image" id="image" placeholder="Image link"><br>
                     <input class = "w35 postPrice" type="text" name="price" id="price" placeholder="Price"><br>
-
+                    @auth
+                    <input type="hidden" class="userID" value="{{ Auth::user()->id }}" name = "user_id"/>
+                    @endauth
                     <select class = "w35 categorySelect" name="select_id" id="category_select" >
                         <option disabled selected value> -- Select category -- </option>
                         @foreach($categories as $category)
