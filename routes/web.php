@@ -31,11 +31,11 @@ Route::get('{category}/{section}/search',[
 ])->name('section.search');
 
 Route::get('/admin/tickets', [
-    HomeController::class,'admin'
+    HomeController::class,'adminTickets'
 ])->name('admin.tickets')->middleware('auth.admin');
 
 Route::get('/admin/users', [
-    HomeController::class,'admin'
+    HomeController::class,'adminUsers'
 ])->name('admin.users')->middleware('auth.admin');
 
 Route::delete('/admin/ticket/delete',[

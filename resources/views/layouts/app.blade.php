@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="This page is designed by a student, who just uses his free time to explore laravel framework.">
 
         <title>Training Page</title>
         <link rel="icon" href="{{ asset('images/icon.png') }}" type = "image/png">

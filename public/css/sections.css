@@ -5,7 +5,8 @@
 }
 
 .urls {
-    margin:3% 0;
+    margin-top:3%;
+    margin-bottom:9%;
 }
 
 .kurls {
@@ -87,39 +88,78 @@ div.breakline {
 }
 
 .filters{
-    align-items: center;
-    width: 17%;
+    width: 15.5%;
     margin: 1% 0% 0% 2%;
     position:fixed;
-
 }
 
 .filter-button{
-
+    min-width: 55px;
+    font-size:100%;
     padding:2%;
     width:22%;
-    margin-left:39%;
     border:1px solid black;
     border-radius: 5%;
+    display: inline-block;
 }
 
-.filter-button:hover{
-    background-color: greenyellow;
+.filter-buttons{
+    text-align: center;
+}
+
+#reset:hover{
+    background-color: rgb(219, 30, 24);
+}
+
+#filter_submit:hover{
+    background-color: rgb(164, 235, 33);
+}
+
+.input-window {
+    width:70%;
+    float:right;
+    position:relative;
+}
+
+.input-label{
+    width: 20%;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width:1883px){
+    .inputs{
+        height:135px;
+    }
+    
+    .input-label{
+        height:auto;
+        width:100%;
+        margin:0;
+    }
+
+    .input-window{
+        width:100%;
+        position:relative;
+    }
+
+    div.breaklineFilter {
+        border-bottom:2px dotted black;
+        margin-top:2%;
+        margin-bottom: 2%;
+        width:100%;
+        position: relative;
+    }
 }
 
 div.breaklineFilter {
-    border-bottom:1px solid black;
+    border-bottom:2px dotted black;
+    position:relative;
     margin-top:2%;
     margin-bottom: 2%;
-    width:80%;
-    margin-left:10%;
+    width:100%;
 }
 
-.center{
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .links{
     margin-top:5%;

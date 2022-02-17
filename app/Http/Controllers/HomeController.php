@@ -95,12 +95,18 @@ class HomeController extends Controller
         return array($request->image, $request->title, $request->description,  $request->price);
     }
     
-    public function admin (Request $request){
+    public function adminTickets (Request $request)
+    {
         $reports = Report::orderBy('id','asc')->get();
         $posts = Post::all();
         $categories = Category::all();
         $sections = Section::all();
         return view('admin',compact('reports','posts','categories','sections'));
+    }
+
+    public function adminUsers (Request $request)
+    {
+        $users = User::all();
     }
 
     public function reportDismiss(Request $request)
