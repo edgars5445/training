@@ -18,53 +18,23 @@ use App\Http\Controllers\SearchController;
 */
 require __DIR__.'/auth.php';
 
-Route::get('/', [
-    HomeController::class, 'index'
-])->name('dashboard');
+Route::controller(HomeController::class)->group(function (){
+    Route::get('/','index')->name('dashboard');
+    Route::get('/admin/tickets', 'adminTickets')->name('admin.tickets')->middleware('auth.admin');
+    Route::get('/admin/users', 'adminUsers')->name('admin.users')->middleware('auth.admin');
+    Route::delete('/admin/ticket/delete', 'reportDismiss')->name('admin.ticketDelete')->middleware('auth.admin');
+    Route::patch('/admin/ticket/update', 'reportResolve')->name('admin.ticketResolve')->middleware('auth.admin');
+    Route::post('/new/post','newPost')->name('new.post');
+    Route::post('/new/post2','newPostAjax')->name('new.post2');
+    Route::get('/{category}', 'openCategory')->name('category');
+    Route::post('/category/delete','deleteCategory')->name('delete.category');
+    Route::post('/category/edit','editCategory')->name('edit.category');
+}); 
 
-Route::post('/report',[
-    SectionController::class, 'reportUser'
-])->name('post.report');
-
-Route::get('{category}/{section}/search',[
-    SectionController::class, 'filter'
-])->name('section.search');
-
-Route::get('/admin/tickets', [
-    HomeController::class,'adminTickets'
-])->name('admin.tickets')->middleware('auth.admin');
-
-Route::get('/admin/users', [
-    HomeController::class,'adminUsers'
-])->name('admin.users')->middleware('auth.admin');
-
-Route::delete('/admin/ticket/delete',[
-    HomeController::class,'reportDismiss'
-])->name('admin.ticketDelete')->middleware('auth.admin');
-
-Route::patch('/admin/ticket/update',[
-    HomeController::class,'reportResolve'
-])->name('admin.ticketResolve')->middleware('auth.admin');
+Route::controller(SectionController::class)->group(function (){
+    Route::post('/report', 'reportUser')->name('post.report');
+    Route::get('/{category}/{section}/search', 'filter')->name('section.search');
+    Route::get('/{category}/{section}', 'index')->name('section');
+});
 
 Route::get('/profile', [ProfileController::class, 'openProfile'])->name('profile.index');
-
-Route::post('/new/post',[HomeController::class, 'newPost'])->name('new.post');
-Route::post('/new/post2',[HomeController::class, 'newPostAjax'])->name('new.post2');
-
-
-Route::get('/{category}',[
-    HomeController::class, 'openCategory'
-])->name('category');
-
-Route::get('/{category}/{section}',[
-    SectionController::class, 'index'
-])->name('section');
-
-
-
-Route::post('category/delete',[HomeController::class, 'deleteCategory'])->name('delete.category');
-Route::post('category/edit',[HomeController::class, 'editCategory'])->name('edit.category');
-
-
-
-

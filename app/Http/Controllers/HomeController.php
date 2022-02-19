@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Section;
 use App\Models\Post;
 use App\Models\Report;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -59,6 +60,19 @@ class HomeController extends Controller
 
     public function newPost(Request $request)
     {
+        $rules = [
+            'title' => 'required|max:50',
+            'description' => 'required|max:1000',
+            'price' => 'required|max:20',
+            'section_select' => 'required',
+        ];
+        $this->validate($request, $rules, [], 
+        [
+            'title' => 'title',
+            'description' => 'description',
+            'price' => 'price',
+            'section_select' => 'section',
+        ]);
 
         $post = new Post();
         $post->title = $request->title;

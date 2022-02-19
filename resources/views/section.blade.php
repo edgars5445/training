@@ -27,8 +27,7 @@
     </div>
     <div class="main-block">
         <div class="main-block sections">         
-            <div class="ajaxDiv">
-                <ul id="ulClass"> 
+                <ul id="ulClass" class="ajaxDiv"> 
                 @foreach ($posts as $post)
                     <li>
                         {{-- <a href="{{ route('section', ['category'=>$categoryName, 'section'=>$section->name]) }}">  --}}
@@ -86,7 +85,7 @@
                 @endforeach
                 </div>
             </ul>
-            </div>
+            
                 <?php if ($posts->isEmpty()){
                     echo "There are no posts here, yet!";
                 }?>

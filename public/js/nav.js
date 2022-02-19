@@ -45,5 +45,10 @@ $("#category_select").on('change', function() {
     }
 });
 
+function countChar(val) {
+    var len = val.value.length;
+    $('#charNum').text(1000 - len +'/1000');
+};
+
 
 

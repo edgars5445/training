@@ -128,15 +128,16 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form method="POST" action="{{action([App\Http\Controllers\HomeController::class, 'newPost']) }}">
+            <form method="POST" onsubmit="return validateForm()" name="postForm" action="{{action([App\Http\Controllers\HomeController::class, 'newPost']) }}" >
                 @csrf
                 <div class="text-center">
-                    <input class="w-75 postTitle" type="text" name="title" placeholder="Title"><br>
-                    <textarea class="w-75 postDescription" name="description" id="description" placeholder="Description" style="height: 150px;"></textarea><br>
+                    <input class="w-75 postTitle" type="text" name="title" placeholder="Title" maxlength="50" ><br>
+                    <textarea class="w-75 postDescription" name="description" id="description" maxlength = "1000" placeholder="Description" style="height: 150px;" onkeyup="countChar(this)"></textarea><br>
+                    <div id="charNum"></div>
                     <input class="h-50 w-75 postImage" type="text" name="image" id="image" placeholder="Image link"><br>
-                    <input class = "w35 postPrice" type="text" name="price" id="price" placeholder="Price"><br>
+                    <input class="w35 postPrice" type="text" name="price" id="price" placeholder="Price" maxlength="20"><br>
                     @auth
-                    <input type="hidden" class="userID" value="{{ Auth::user()->id }}" name = "user_id"/>
+                        <input type="hidden" class="userID" value="{{ Auth::user()->id }}" name = "user_id"/>
                     @endauth
                     <select class = "w35 categorySelect" name="select_id" id="category_select" >
                         <option disabled selected value> -- Select category -- </option>
@@ -145,13 +146,6 @@
                         @endforeach
                     </select><br>
                         
-                    @php
-                        $r = $_SERVER['REQUEST_URI']; 
-                        $r = explode('/', $r);
-                        $r = array_filter($r);
-                        $r = array_merge($r, array()); 
-                        $endofurl = ucfirst(str_replace('%20',' ',end($r)));
-                    @endphp
                     <select class = "w35 postSelect" name="section_select" id="section_select" onchange="checkCategory(this)">
                         <option disabled selected value=0> -- Select section -- </option>
                         @foreach($sections as $section)
@@ -164,10 +158,9 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         <input type="hidden" value="{{ $route }}" id="routeName">
 
-            <button type="button" class="btn btn-primary" id="post-button" data-bs-dismiss="modal">Post</button>
-
+        <button @if($route =="section") type="button" @else type="submit" @endif class="btn btn-primary" id="post-button" name="post-button" data-route="{{ $route }}" >Post</button>
+            
             {{-- data-bs-toggle="modal" data-bs-target="#staticBackdrop2"  --button post attributes, which are needed to move on to next modal --}}
-            {{-- Also, a fix needs to be made in after posting -> returns back to the same page -> aftewards with ajax  --}}
             </form>
         </div>
     </div>
