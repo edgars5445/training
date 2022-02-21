@@ -2,6 +2,7 @@ var items = document.getElementsByName("breakline");
 var lastchild = items[items.length-1];
 lastchild.remove();
 
+//Copy link function
 function copyToClipboard(id,post) {
     var text = document.getElementById(id);
     text.type = "text";
@@ -41,3 +42,25 @@ function resetButton(category,section){
     window.localStorage.clear(); 
     location.href = '/' + category + '/' + section;
 }
+
+let reportButtons = document.querySelectorAll(".report-button");
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+reportButtons.forEach((button) => {
+    button.addEventListener('click', () => {    
+        let reportPostId = button.dataset.postid;
+        let reportUserId = button.dataset.userid;
+        let submitButton = document.querySelector(".submit-report" + button.dataset.postid);
+        submitButton.addEventListener('click',()=>{
+            let report = document.querySelector(".report_select" + button.dataset.postid).value;
+            $.post(
+                "/report",
+                {report: report, postId: reportPostId, userId: reportUserId, _token: CSRF_TOKEN}
+            )
+            
+            button.style.background = "red";
+            button.disabled ="true";
+        })
+           
+    });
+});

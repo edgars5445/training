@@ -131,11 +131,11 @@
             <form method="POST" onsubmit="return validateForm()" name="postForm" action="{{action([App\Http\Controllers\HomeController::class, 'newPost']) }}" >
                 @csrf
                 <div class="text-center">
-                    <input class="w-75 postTitle" type="text" name="title" placeholder="Title" maxlength="50" ><br>
-                    <textarea class="w-75 postDescription" name="description" id="description" maxlength = "1000" placeholder="Description" style="height: 150px;" onkeyup="countChar(this)"></textarea><br>
+                    <input class="w-75 postTitle" type="text" name="title" placeholder="Title" maxlength="50" ><br><br>
+                    <textarea class="w-75 postDescription" name="description" id="description" maxlength = "1000" placeholder="Description" style="height: 150px;" onkeyup="countChar(this)"></textarea><br><br>
                     <div id="charNum"></div>
-                    <input class="h-50 w-75 postImage" type="text" name="image" id="image" placeholder="Image link"><br>
-                    <input class="w35 postPrice" type="text" name="price" id="price" placeholder="Price" maxlength="20"><br>
+                    <input class="h-50 w-75 postImage" type="text" name="image" id="image" placeholder="Image link"><br><br>
+                    <input class="w35 postPrice" type="text" name="price" id="price" placeholder="Price" maxlength="20"><br><br>
                     @auth
                         <input type="hidden" class="userID" value="{{ Auth::user()->id }}" name = "user_id"/>
                     @endauth
@@ -144,9 +144,9 @@
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
-                    </select><br>
+                    </select>
                         
-                    <select class = "w35 postSelect" name="section_select" id="section_select" onchange="checkCategory(this)">
+                    <select class = "w35 sectionSelect" name="section_select" id="section_select" onchange="checkCategory(this)">
                         <option disabled selected value=0> -- Select section -- </option>
                         @foreach($sections as $section)
                             <option value="{{ $section->id }}" name="{{ $section->category_id }}" >{{ $section->name }}</option>

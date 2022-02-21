@@ -3,7 +3,6 @@
         <title>Training page</title>
         <link rel="stylesheet" href="{{ asset('css/sections.css') }}">
         <script src="{{ asset("js/section.js") }}" defer></script>
-        <script src="{{ asset("js/sectionAjax.js") }}" defer></script>
     </head>
     <div class="filters">
         <div class="urls"><a href="/" class="aurls">Home</a> / <a href="{{ route('category', [strtolower($category)]) }}" class="aurls">{{ $category}}</a> / {{ $section }} </div>
