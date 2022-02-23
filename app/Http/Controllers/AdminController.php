@@ -17,12 +17,13 @@ class AdminController extends Controller
         $posts = Post::all();
         $categories = Category::all();
         $sections = Section::all();
-        return view('admin',compact('reports','posts','categories','sections'));
+        return view('adminTickets',compact('reports','posts','categories','sections'));
     }
 
     public function adminUsers (Request $request)
     {
         $users = User::all();
+        return view('adminUsers', compact('users'));
     }
 
     public function reportDismiss(Request $request)

@@ -76,7 +76,11 @@ class HomeController extends Controller
         $post = new Post();
         $post->title = $request->title;
         $post->description = $request->description;
-        $post->image = $request->image;
+        if($request->image == ""){
+            $post->image = "https://www.keminet.net/wp-content/themes/arkahost/assets/images/default.jpg";
+        }else{
+            $post->image = $request->image;
+        }
         $post->section_id = $request->section_select;
         $post->price = $request->price;
         $post->user_id = $request->user_id;

@@ -7,10 +7,10 @@
     <div class="main-block">  
         <div class="main-block sections">     
             <ul>
-            <img href="{{ Auth::user()->image }}" alt="Profile picture">
+            <img src="{{ Auth::user()->image }}" alt="Profile picture">
             <li>{{ Auth::user()->name}}</li>
             <li>{{  Auth::user()->email }}</li>
-            <input type="submit" value="Sumbit">
+            <input type="button" value="Submit">
             </ul>
         </div>
     </div>

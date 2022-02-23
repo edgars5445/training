@@ -8,8 +8,9 @@ function validateForm() {
     let y = document.forms["postForm"]["description"].value;
     let z = document.forms["postForm"]["price"].value;
     let g = document.forms["postForm"]["section_select"].value;
-
-    if (x == "" || y == "" || z == "" || g == ""  || x.length > 50  || y.length > 1000  || z.length > 20 ) {
+    let img = document.forms["postForm"]["image"].value;
+    
+    if (x == "" || y == "" || z == "" || g == ""  || x.length > 50  || y.length > 1000  || z.length > 20) {
         if(x == "" || x.length > 50){
             document.querySelector(".postTitle").style.boxShadow = "0 0 5px #CC0000";
         } else {
@@ -33,8 +34,12 @@ function validateForm() {
         } else {
             document.querySelector(".sectionSelect").style.boxShadow = "";
         }
-        
-        alert("The necessary fields must be filled!");
+
+        // if(imageResponse == false){
+        //     document.querySelector(".postImage").style.boxShadow = "0 0 5px #CC0000"; 
+        // } else {
+        //     document.querySelector(".postImage").style.boxShadow = "";
+        // }
         return false;
     }
 // style="box-shadow: 0 0 5px #CC0000;"
@@ -45,17 +50,22 @@ if(postButton.type == "button" && postsCount < 10){
     if(routeName =="section"){
         postButton.addEventListener('click', () => {
             if(validateForm()==true){
-            let postImage = document.querySelector(".postImage").value;
+            let postImage;
+            if(document.querySelector(".postImage")?.value == ''){
+                postImage = "https://www.keminet.net/wp-content/themes/arkahost/assets/images/default.jpg";
+            } else {
+                console.log("i worked")
+                postImage = document.querySelector(".postImage").value;
+            }
             let postTitle = document.querySelector(".postTitle").value;
             let postDescription = document.querySelector(".postDescription").value;
             let postPrice = document.querySelector(".postPrice").value;
             let postsContainer = document.querySelector(".ajaxDiv");
-            let postSection = document.querySelector(".postSelect").value;
-            let postCategory = document.querySelector(".categorySelect").value;
+            let postSection = document.querySelector(".sectionSelect").value;
             let user_id = document.querySelector(".userID").value;
             $.post(
                 "/new/post2",
-                {image: postImage, title: postTitle, description: postDescription, price: postPrice, section_id: postSection, category_id: postCategory,user_id: user_id, _token: CSRF_TOKEN},
+                {image: postImage, title: postTitle, description: postDescription, price: postPrice, section_id: postSection, user_id: user_id, _token: CSRF_TOKEN},
                 function(data) {
                     let post = `<li>
                     <button class="section">

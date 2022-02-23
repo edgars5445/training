@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
         $user->email = 'pastorsedgars5445@gmail.com';
         $user->password = bcrypt('Basically1!');
         $user->role = 2;
+        $user->image = "https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png";
         $user->save();
 
         $user = new User();
@@ -27,6 +28,7 @@ class UserSeeder extends Seeder
         $user->email = 'test@example.com';
         $user->password = bcrypt('testing1');
         $user->role = 1;
+        $user->image = "https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png";
         $user->save();
     }
 }

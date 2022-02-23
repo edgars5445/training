@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->integer('price');
-            $table->string('image')->default('');
+            $table->string('image')->default('https://www.keminet.net/wp-content/themes/arkahost/assets/images/default.jpg');
             $table->foreignId('section_id')->constrained('sections');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();

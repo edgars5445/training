@@ -26,7 +26,7 @@ Route::controller(AdminController::class)->group(function (){
     Route::patch('/admin/ticket/update', 'reportResolve')->name('admin.ticketResolve')->middleware('auth.admin');
 });
 
-Route::controller(ProfilenController::class)->group(function (){
+Route::controller(ProfileController::class)->group(function (){
     Route::get('/profile', 'openProfile')->name('profile.index');
 });
 
